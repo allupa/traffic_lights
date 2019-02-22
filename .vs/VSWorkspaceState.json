@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\traffic_lights",
+    "\\traffic_lights\\apiReader",
+    "\\traffic_lights\\apiReader\\migrations",
+    "\\traffic_lights\\apiReader\\templates",
+    "\\traffic_lights\\traffic_lights"
+  ],
+  "SelectedNode": "\\traffic_lights\\apiReader\\models.py",
+  "PreviewInSolutionExplorer": false
+}
