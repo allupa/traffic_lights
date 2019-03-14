@@ -1,1 +1,26 @@
+{% extends 'base.html' %}
+
 <p>This is your profile, {{ user.username }}.</p>
+<p><a href="/home/">Back home</a></p>
+
+{% block body %}
+<div class="container">
+
+    <h1>Profile</h1>
+
+    <p>Username: {{ user }}</p>
+
+    <p>First name: {{ user.first_name }}</p>
+
+    <p>Last name: {{ user.last_name }}</p>
+
+    <p>Email: {{ user.email }}</p>
+
+    <p>City: {{ user.userprofile.city }}</p>
+
+
+</div>
+<p><a href="/password/">Change Password</a></p>
+<p><a href="edit/">Change info</a></p>
+<p><a href="delete/{{ user }}">Delete account</a></p>
+{% endblock %}

@@ -1,6 +1,11 @@
 from django.db import models
 import datetime
 from django.utils import timezone
+from django.urls import reverse
+from django.contrib.auth.models import User
+from django.conf import settings
+
+
 
 
 
@@ -10,7 +15,6 @@ from django.utils import timezone
 #    comment = models.TextField(blank=False, max_length=500, default='')
  #   def __str__(self):
   #      return self.comment
-
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)

@@ -1,0 +1,13 @@
+
+<h1>CRUD Function Based View Example</h1>
+<ul>
+    {% for sensor in object_list %}
+    <li>
+        {{ sensor.sensor_id }}  {{ sensor.crossroad }}
+        <a href="{% url 'apiReader:sensor_edit' sensor.sensor_id %}">edit</a>
+        <a href="{% url 'apiReader:sensor_delete' sensor.sensor_id %}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'apiReader:sensor_new' %}">Add</a>  
