@@ -10,6 +10,7 @@ django = "*"
 psycopg2 = "*"
 requests = "*"
 pylint = "*"
+unirest = "*"
 
 [requires]
 python_version = "3.5"

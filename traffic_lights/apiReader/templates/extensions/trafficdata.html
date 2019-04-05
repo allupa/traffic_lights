@@ -1,0 +1,56 @@
+﻿{% extends 'base.html' %}
+{% block body %}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Django</title>
+</head>
+<body>
+    <h2>Valitse oma risteyksesi</h2>
+    <select id="mylist" onchange="myFunction()" class='form-control'>
+        {% for data in detectorData %}
+        <option>{{ data.device }}</option>
+        {% endfor %}
+    </select>
+
+    <table style="width:50%" id="myTable">
+
+        <caption>Intersection data in Tampere</caption>
+        <tr>
+            <th>Intersection name</th>
+            <th>Detector</th>
+            <th>Max wait time</th>
+            <th>Avg wait time</th>
+        </tr>
+        {% for data in detectorData %}
+        <tr>
+            <td> {{ data.device }}</td>
+            <td> {{ data.detector }}</td>
+            <td>{{ data.maxWaitTime }}</td>
+            <td>{{ data.avgWaitTime }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("mylist");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

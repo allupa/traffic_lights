@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
     <title>{% block title %}My amazing site{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'apiReader/style.css' %}" type="text/css">
 </head>
 
 <body>
@@ -15,6 +16,7 @@
             <li><a href="/signup/">Signup</a></li>
             <li><a href="/accounts/login/">Login</a></li>
             <li><a href="/accounts/profile">Profile</a></li>
+            <li><a href="/home/trafficdata/">Trafficdata</a></li>
         </ul>       
     </div>
 

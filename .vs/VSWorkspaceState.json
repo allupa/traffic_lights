@@ -9,6 +9,6 @@
     "\\traffic_lights\\apiReader\\templates\\registration",
     "\\traffic_lights\\traffic_lights"
   ],
-  "SelectedNode": "\\traffic_lights\\apiReader\\views.py",
+  "SelectedNode": "\\traffic_lights\\apiReader\\forms.py",
   "PreviewInSolutionExplorer": false
 }

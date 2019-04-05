@@ -30,3 +30,11 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
     def __str__(self):
         return self.choice_text
+
+class Device_detector(models.Model):
+    device = models.CharField(max_length=100)
+    detector = models.CharField(max_length=100)
+    calcAmount = models.IntegerField(default=0)
+    reliabValue = models.IntegerField(default=0)
+    def __str__(self):
+        return self.device

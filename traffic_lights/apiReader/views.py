@@ -91,10 +91,15 @@ def delete_profile(request, username):
 
 #from .models import trafficDetector
 
-#def api(request):
- #   response = requests.get('http://trafficlights.tampere.fi/api/v1/trafficAmount')
-  #  detectorData = response.json()
-   # return render(request, 'comment.html', {'detectorData': detectorData})
+def api(request):
+    #response = requests.get('http://trafficlights.tampere.fi/api/v1/trafficAmount')
+    response = requests.get('http://trafficlights.tampere.fi/api/v1/queueLength')
+    detectorData = response.json()
+    detectorData = detectorData['results']
+    return render(request, 'extensions/trafficdata.html', {'detectorData': detectorData})
+
+
+ # return render(request, 'extensions/trafficdata.html')
 
 #def comment(request):
  #   if request.method == "POST":
