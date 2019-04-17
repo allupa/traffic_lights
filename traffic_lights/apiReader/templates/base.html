@@ -4,6 +4,7 @@
     <title>{% block title %}My amazing site{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'apiReader/style.css' %}" type="text/css">
+    {% block extrahead %}{% endblock %}
 </head>
 
 <body>
@@ -17,6 +18,7 @@
             <li><a href="/accounts/login/">Login</a></li>
             <li><a href="/accounts/profile">Profile</a></li>
             <li><a href="/home/trafficdata/">Trafficdata</a></li>
+            <li><a href="/home/trafficdata/map">Map</a></li>
         </ul>       
     </div>
 

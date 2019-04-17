@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'apiReader/map.css' %}" type="text/css">
+{% endblock %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+</head>
+
+<body>
+    <ul>
+        <li>Lista</li>
+    </ul>
+    <form>
+        <input type="button" onclick="addMarker()" value="Click me" />
+        <input type="button" value="Click me" />
+    </form>
+    <h1>Kartan lataaminen vie aikaa</h1>
+    <div id="mapid" style="height: 500px; width: 800px;"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var received_data = $.ajax({
+            url: "https://geodata.tampere.fi/geoserver/maankaytto/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=maankaytto:WFS_LIIKENNEVALO_ILMAISIN&outputFormat=application%2Fjson&srsName=EPSG:4326",
+            datatype: "json",
+            success: console.log("Geodata successfully loaded."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+
+        $.when(received_data).done(function () {
+            var mymap = L.map('mapid').setView([61.4978, 23.7610], 11);
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox.streets',
+                accessToken: 'pk.eyJ1IjoiYXNhYXJlbGEiLCJhIjoiY2p1bDVueXlwMXg4ODRkb2FzenBuYnFtciJ9.6VHAyONO7Qi7utdon378gQ'
+            }).addTo(mymap);
+
+            var marker1 = L.marker([61.4979, 23.7653]).addTo(mymap);
+
+
+
+            marker1 = L.marker([61.4869, 23.8242]).addTo(mymap);
+            marker1 = L.marker([61.5138, 23.6672]).addTo(mymap);
+            marker1 = L.marker([61.4933, 23.7531]).addTo(mymap);
+
+            var intersections = L.geoJSON(received_data.responseJSON)
+                .bindTooltip(function (layer) {
+                    ilmid = layer.feature.properties.ILMAISIN_ID;
+                    tykoodi = layer.feature.properties.TYYPPI_KOODI
+                    tyyppi = layer.feature.properties.TYYPPI
+                    etaisyys = layer.feature.properties.ETAISYYS
+                    linro = layer.feature.properties.LIITTYMAN_NRO;
+                    tunnus = layer.feature.properties.TUNNUS
+                    
+
+                    var str = "Ilmaisin ID: " + ilmid
+                        + "<br> Tyyppikoodi: " + tykoodi
+                        + "<br> Tyyppi: " + tyyppi
+                        + "<br> Etaisyys: " + etaisyys
+                        + "<br> Liittyman nro: " + linro
+                        + "<br> Tunnus: " + tunnus;
+
+                    return str
+                })
+                .addTo(mymap);
+        });
+        
+
+    </script>
+</body>
+</html>
+{% endblock %}

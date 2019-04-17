@@ -13,6 +13,7 @@ urlpatterns = [
     path('password/', views.change_password, name='change_password'),
     path('accounts/profile/edit/', views.edit_profile, name='edit_profile'),
     path('home/trafficdata/', views.api, name='trafficdata'),
+    path('home/trafficdata/map', views.map, name='map'),
   #  path('home/trafficdata/data'), views.apidata, name='datadata'),
     url(r'^accounts/profile/delete/(?P<username>[\w|\W.-]+)/$', views.delete_profile, name='delete_profile'),
     ]

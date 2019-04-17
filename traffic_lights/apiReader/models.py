@@ -4,10 +4,11 @@ from django.utils import timezone
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.conf import settings
+#from django.contrib.gis.db import models as gismodels
 
 
 
-
+    
 
 
 # Create your models here.

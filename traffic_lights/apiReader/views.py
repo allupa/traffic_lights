@@ -98,6 +98,10 @@ def api(request):
     detectorData = detectorData['results']
     return render(request, 'extensions/trafficdata.html', {'detectorData': detectorData})
 
+def map(request):
+    response = requests.get('https://geodata.tampere.fi/geoserver/maankaytto/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=maankaytto:WFS_LIIKENNEVALO_ILMAISIN&outputFormat=application%2Fjson&srsName=EPSG:4326')
+    geodata = response.json()
+    return render(request, 'extensions/map.html', {'geodata': geodata})
 
  # return render(request, 'extensions/trafficdata.html')
 
