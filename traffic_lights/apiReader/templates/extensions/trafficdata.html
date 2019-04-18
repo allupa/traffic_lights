@@ -5,6 +5,12 @@
 <head>
     <meta charset="utf-8">
     <title>Django</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
+    
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+
 </head>
 <body>
     <h2>Valitse oma risteyksesi</h2>
@@ -32,6 +38,9 @@
         </tr>
         {% endfor %}
     </table>
+    
+
+    <div id="container" style = "width: 550px; height: 400px; margin: 0 auto"></div>
     <script>
         function myFunction() {
             var input, filter, table, tr, td, i;
@@ -50,6 +59,40 @@
                 }
             }
         }
+
+        // bubble_graph.js
+        var bubbleChart = function () {
+            var width = 600,
+                height = 400;
+
+            function chart(selection) {
+                // you gonna get here
+            }
+
+            chart.width = function (value) {
+                if (!arguments.length) { return width; }
+                width = value;
+                return chart;
+            }
+
+            chart.height = function (value) {
+                if (!arguments.length) { return height; }
+                height = value;
+                return chart;
+            }
+
+            return chart;
+        }
+
+        var chart = bubbleChart().width(600).height(400);
+        d3.json("https://geodata.tampere.fi/geoserver/maankaytto/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=maankaytto:WFS_LIIKENNEVALO_ILMAISIN&outputFormat=application%2Fjson&srsName=EPSG:4326").then(function (data) {
+            console.log("Jees");
+        });
+
+
+
+        
+
     </script>
 </body>
 </html>

@@ -45,13 +45,7 @@
                 accessToken: 'pk.eyJ1IjoiYXNhYXJlbGEiLCJhIjoiY2p1bDVueXlwMXg4ODRkb2FzenBuYnFtciJ9.6VHAyONO7Qi7utdon378gQ'
             }).addTo(mymap);
 
-            var marker1 = L.marker([61.4979, 23.7653]).addTo(mymap);
 
-
-
-            marker1 = L.marker([61.4869, 23.8242]).addTo(mymap);
-            marker1 = L.marker([61.5138, 23.6672]).addTo(mymap);
-            marker1 = L.marker([61.4933, 23.7531]).addTo(mymap);
 
             var intersections = L.geoJSON(received_data.responseJSON)
                 .bindTooltip(function (layer) {

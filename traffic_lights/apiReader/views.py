@@ -103,6 +103,9 @@ def map(request):
     geodata = response.json()
     return render(request, 'extensions/map.html', {'geodata': geodata})
 
+def bubble(request):
+    return render(request, 'extensions/bubble.html')
+
  # return render(request, 'extensions/trafficdata.html')
 
 #def comment(request):

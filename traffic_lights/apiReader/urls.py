@@ -14,6 +14,7 @@ urlpatterns = [
     path('accounts/profile/edit/', views.edit_profile, name='edit_profile'),
     path('home/trafficdata/', views.api, name='trafficdata'),
     path('home/trafficdata/map', views.map, name='map'),
+    path('home/trafficdata/bubble',views.bubble,name='bubble'),
   #  path('home/trafficdata/data'), views.apidata, name='datadata'),
     url(r'^accounts/profile/delete/(?P<username>[\w|\W.-]+)/$', views.delete_profile, name='delete_profile'),
     ]

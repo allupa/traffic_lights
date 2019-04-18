@@ -6,11 +6,26 @@ tr {
 
 table {
     border: 1px dashed black;
-    
 }
 
+td{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+h2 {
+    text-align:left;
+    margin-left: 15px;
+}
+
+#mylist{
+    margin-left: 15px;
+}
 body {
     font-family:'Segoe UI';
     background-color: whitesmoke;
 }
+
+
 
